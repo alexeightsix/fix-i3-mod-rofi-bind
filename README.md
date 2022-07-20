@@ -1,2 +1,28 @@
-# fix-i3-mod-rofi-bind
-This Python3 script allows you to use the mod key for rofi and switching workstations without interference 
+# Problem
+When using the "Super_L/Windows" key as a workspace switcher along with Rofi doesn't work too well. Switching between workstations will bring up the Rofi menu. I tried various utilities to be able to create a key binding that work allow me to switch between workstations without brining up the Rofi menu but nothing seemed to work.
+# Solution
+I ended up writing my own simple script in Python with the help of the "keyboard" module to create my own custom keybind.
+# System Requirements
+- GIT
+- Python
+- Rofi
+- i3
+# Installation
+`git clone https://github.com/alexeightsix/fix-i3-mod-rofi-bind.git` 
+
+`sudo pip install -r fix-i3-mod-rofi-bind.git/requirements.txt`
+
+# Configuration
+Currently all the configuration values are hard-coded in the script. To change the command that runs and the user it runs as 
+you will need to open up `run.py` and edit the variables accordingly. 
+# Run
+`python3 fix-i3-mod-rofi-bind.git/run.py`
+
+# i3config
+Add the following line to have the script startup once i3 starts
+
+`exec --no-startup-id sudo python3 fix-i3-rofi-bind/run.py`
+
+# Notes
+The keyboard module requires the script to run as sudo.
+
