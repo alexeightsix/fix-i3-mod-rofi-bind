@@ -1,5 +1,5 @@
 # Problem
-Switching between workstations will also bring up the Rofi menu if you have the mod key also binded to bring up the rofi menu. I tried various utilities to be able to create a custom keybinding that nothing worked. 
+Switching between workstations will also bring up the Rofi menu unintentionally if you have the $mod key also binded to bring up the Rofi menu. I tried various utilities to be able to create a custom keybinding that nothing worked.
 
 # Solution
 I ended up writing my own simple script in Python with the help of the "keyboard" module to create my own custom keybind.
