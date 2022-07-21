@@ -1,5 +1,6 @@
 # Problem
-When using the "Super_L/Windows" key as a workspace switcher along with Rofi doesn't work too well. Switching between workstations will bring up the Rofi menu. I tried various utilities to be able to create a key binding that work allow me to switch between workstations without brining up the Rofi menu but nothing seemed to work.
+Switching between workstations will also bring up the Rofi menu unintentionally if you have the $mod key also binded to bring up the Rofi menu. I tried various utilities to be able to create a custom keybinding that nothing worked.
+
 # Solution
 I ended up writing my own simple script in Python with the help of the "keyboard" module to create my own custom keybind.
 # System Requirements
