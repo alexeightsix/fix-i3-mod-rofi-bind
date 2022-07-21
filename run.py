@@ -19,7 +19,7 @@ while True:
     
     if event.event_type == keyboard.KEY_UP and event.name == mod_key:
     
-        if current_milli_time() - last_pressed < 100:
+        if current_milli_time() - last_pressed < 400:
             os.system(command_to_execute)
 
     if event.event_type == keyboard.KEY_DOWN and event.name == mod_key:
