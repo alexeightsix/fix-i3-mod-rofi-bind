@@ -11,16 +11,20 @@ mod_key = "windows"
 command_to_execute = "sudo -u alex rofi -show run"
 
 while True:
-    
-    event = keyboard.read_event()
+    try:
+        event = keyboard.read_event()
 
-    if event.event_type == keyboard.KEY_DOWN and event.name in workspaces:
-        time.sleep(0.500)
+        if event.event_type == keyboard.KEY_DOWN and event.name in workspaces:
+            time.sleep(0.500)
     
-    if event.event_type == keyboard.KEY_UP and event.name == mod_key:
+        if event.event_type == keyboard.KEY_UP and event.name == mod_key:
     
-        if current_milli_time() - last_pressed < 400:
-            os.system(command_to_execute)
+            if current_milli_time() - last_pressed < 400:
+                os.system(command_to_execute)
 
-    if event.event_type == keyboard.KEY_DOWN and event.name == mod_key:
-        last_pressed = current_milli_time()
+        if event.event_type == keyboard.KEY_DOWN and event.name == mod_key:
+            last_pressed = current_milli_time()
+    except Exception:
+        pass
+    except KeyboardInterrupt:
+        exit(0)
