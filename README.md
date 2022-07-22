@@ -17,7 +17,7 @@ I ended up writing my own simple script in Python with the help of the "keyboard
 Currently all the configuration values are hard-coded in the script. To change the command that runs and the user it runs as 
 you will need to open up `run.py` and edit the variables accordingly. 
 # Run
-`python3 fix-i3-mod-rofi-bind.git/run.py`
+`sudo python3 fix-i3-mod-rofi-bind.git/run.py`
 
 # i3config
 Add the following line to have the script startup once i3 starts
