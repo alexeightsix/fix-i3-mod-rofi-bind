@@ -9,7 +9,7 @@ last_key_pressed = None
 
 
 def is_mod(key):
-    return str(key) is mod_key
+    return str(key) == mod_key
 
 def on_press(key):
     global last_key_pressed
