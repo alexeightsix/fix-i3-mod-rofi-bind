@@ -1,30 +1,40 @@
-import keyboard
+#!/usr/bin/env python3
 import time
 import os
+from pynput import keyboard
 
-def current_milli_time():
+def now():
     return round(time.time() * 1000)
 
-last_pressed = current_milli_time()
-halt_keys = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "r"}
-mod_key = "windows"
 command_to_execute = "sudo -u alex rofi -show run"
+time_last_pressed = 0
+last_key_pressed = ""
 
-while True:
-    try:
-        event = keyboard.read_event()
+mod_key = "Key.cmd"
 
-        if event.event_type == keyboard.KEY_DOWN and event.name in halt_keys:
-            time.sleep(0.500)
-    
-        if event.event_type == keyboard.KEY_UP and event.name == mod_key:
-    
-            if current_milli_time() - last_pressed < 400:
-                os.system(command_to_execute)
+def open_rofi():
+    os.system(command_to_execute)
 
-        if event.event_type == keyboard.KEY_DOWN and event.name == mod_key:
-            last_pressed = current_milli_time()
-    except Exception:
-        pass
-    except KeyboardInterrupt:
-        exit(0)
+def is_mod(key):
+    key = str(key)
+    return key == mod_key
+
+def set_last_key(key):
+    global last_key_pressed
+    last_key_pressed = str(key)
+
+def on_press(key):
+    set_last_key(key)
+    if is_mod(key):
+        global time_last_pressed
+        time_last_pressed = now()
+
+def on_release(key):
+    if is_mod(key) and now() - time_last_pressed:
+        global last_key_pressed
+        if is_mod(last_key_pressed):
+            open_rofi()
+
+
+with keyboard.Listener(on_press=on_press, on_release=on_release) as listener: listener.join()
+

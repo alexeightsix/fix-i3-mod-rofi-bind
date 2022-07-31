@@ -2,7 +2,7 @@
 Switching between workstations will also bring up the Rofi menu unintentionally if you have the $mod key also binded to bring up the Rofi menu. I tried various utilities to be able to create a custom keybinding that nothing worked.
 
 # Solution
-I ended up writing my own simple script in Python with the help of the "keyboard" module to create my own custom keybind.
+I ended up writing my own simple script in Python with the help of the "pynput" module to create my own custom keybind.
 # System Requirements
 - GIT
 - Python
@@ -17,13 +17,8 @@ I ended up writing my own simple script in Python with the help of the "keyboard
 Currently all the configuration values are hard-coded in the script. To change the command that runs and the user it runs as 
 you will need to open up `run.py` and edit the variables accordingly. 
 # Run
-`sudo python3 fix-i3-mod-rofi-bind.git/run.py`
+`python3 fix-i3-mod-rofi-bind.git/run.py`
 
 # i3config
 Add the following line to have the script startup once i3 starts
-
-`exec --no-startup-id sudo python3 fix-i3-rofi-bind/run.py`
-
-# Notes
-The keyboard module requires the script to run as sudo.
-
+`exec --no-startup-id python3 fix-i3-rofi-bind/run.py`
