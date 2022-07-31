@@ -1,35 +1,24 @@
 #!/usr/bin/env python3
-import time
 import os
 from pynput import keyboard
 
-def now():
-    return round(time.time() * 1000)
-
-command_to_execute = "sudo -u alex rofi -show run"
-last_key_pressed = ""
-
 mod_key = "Key.cmd"
+command_to_execute = "rofi -show run"
 
-def open_rofi():
-    os.system(command_to_execute)
+last_key_pressed = None
+
 
 def is_mod(key):
-    key = str(key)
-    return key == mod_key
+    return str(key) is mod_key
 
-def set_last_key(key):
+def on_press(key):
     global last_key_pressed
     last_key_pressed = str(key)
 
-def on_press(key):
-    set_last_key(key)
-
 def on_release(key):
-    if is_mod(key):
-        global last_key_pressed
-        if is_mod(last_key_pressed):
-            open_rofi()
+    global last_key_pressed
+    if is_mod(key) and is_mod(last_key_pressed):
+        os.system(command_to_execute)
 
 
 with keyboard.Listener(on_press=on_press, on_release=on_release) as listener: listener.join()
